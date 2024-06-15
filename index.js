@@ -40,7 +40,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message:'Select license used for this project.',
-        choices: ["MIT", "Apache", "Boost", "BSD"],
+        choices: ["MIT", "Apache 2.0", "Boost"],
        },
        {
         type: 'input',
@@ -63,33 +63,11 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((response) => {
-        const generateMarkdown = `# ${response.title}
-       
-        # Description
-        ${response.description}
-        
-        # Table of Contents
-        1. [Installation](#installation)
-        2. [Usage](#usage)
-        3. [Credits](#credits)
-        4. [License](#license)
-
-        ## Installation <a name="installation"></a>
-        ${response.install}
-        ## Usage < a name="usage"></a>
-        ${response.usage}
-        ## Credits <a name="credits'></a>
-        ${response.credits} 
-        ## License <a name="license"></a>
-        ${response.license}`;
-
-
-        fs.writeFile("generatedReadMe.md", createMarkdown, (err) => {
-            if (err) throw err;
+        const markdownText = generateMarkdown(response)
+        writeToFile("README.md", markdownText)
             console.log("The file has been created!")
         });
-    });
-}
+    }
 
 // Function call to initialize app
 init();
