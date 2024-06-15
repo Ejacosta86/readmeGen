@@ -1,6 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require ("fs");
+const markdown = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -12,43 +14,43 @@ const questions = [
        {
         type: 'input',
         name: 'description',
-        message: 'type description of your project',
+        message: 'Provide a description of your project.',
        },
        {
         type: 'input',
-        name: 'installation',
-        message: 'eneter installtion instructions',
+        name: 'install',
+        message: 'Provide installtion instructions',
        },
        {
         type: 'input',
         name:'usage',
-        message:'What will this project use for?',
+        message:'Provide usage information',
        },
        {
         type: 'input',
-        name: 'credits',
-        message: 'list your collaborators?',
+        name: 'contribution',
+        message: 'list your collaborators. If none, please enter N/A.',
        },
        {
         type: 'input',
         name: 'test',
-        message: 'Does this project include test?',
+        message: 'Provide instrustions for testing your project',
        },
        {
         type: 'list',
         name: 'license',
-        message:'License used for this project?',
-        choices: ["MIT, Apache, Boost, BSD"],
+        message:'Select license used for this project.',
+        choices: ["MIT", "Apache", "Boost", "BSD"],
        },
        {
         type: 'input',
-        name: 'git',
-        message: 'Whats your github username?',
+        name: 'username',
+        message: 'Whats your GitHub username?',
        },
        {
         type: 'input',
         name: 'email',
-        message: 'What is your email?'
+        message: 'What is your email address?'
        }, 
    
 ];
@@ -61,18 +63,19 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((response) => {
-        const createMarkdown = `# ${response.title}
-        
-        #Description
+        const generateMarkdown = `# ${response.title}
+       
+        # Description
         ${response.description}
-        #Table of Contents
+        
+        # Table of Contents
         1. [Installation](#installation)
         2. [Usage](#usage)
         3. [Credits](#credits)
         4. [License](#license)
 
         ## Installation <a name="installation"></a>
-        ${response.installation}
+        ${response.install}
         ## Usage < a name="usage"></a>
         ${response.usage}
         ## Credits <a name="credits'></a>
@@ -91,3 +94,7 @@ function init() {
 // Function call to initialize app
 init();
 
+//need to get the badges to show for lic
+//need to get the email to show in the section needed
+//github need to show in section needed with link
+//check the link of Table of cont.
