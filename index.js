@@ -1,53 +1,57 @@
+// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require ("fs");
 
-
-// TODO: Include packages needed for this application
-inquirer
-.prompt([
-   {
-    type: 'input',
-    name: 'title',
-    message: 'What is the title of your project?',
-   },
-   {
-    type: 'input',
-    name: 'description',
-    message: 'type description of your project',
-   },
-   {
-    type: 'input',
-    name: 'installation',
-    message: 'eneter installtion instructions',
-   },
-   {
-    type: 'input',
-    name:'usage',
-    message:'What will this project use for?',
-   },
-   {
-    type: 'input',
-    name: 'credits',
-    message: 'list your collaborators?',
-   },
-   {
-    type: 'input',
-    name: 'test',
-    message: 'Does this project include test?',
-   },
-//    {
-//     type: 'list',
-//     name: 'license',
-//     message:'License used for this project?',
-//     choices:
-//    } 
-//make sure you listen to paula and finish this part!
-])
-.then((answers) => {
-    console.log("I suck");
-})
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the title of your project?',
+       },
+       {
+        type: 'input',
+        name: 'description',
+        message: 'type description of your project',
+       },
+       {
+        type: 'input',
+        name: 'installation',
+        message: 'eneter installtion instructions',
+       },
+       {
+        type: 'input',
+        name:'usage',
+        message:'What will this project use for?',
+       },
+       {
+        type: 'input',
+        name: 'credits',
+        message: 'list your collaborators?',
+       },
+       {
+        type: 'input',
+        name: 'test',
+        message: 'Does this project include test?',
+       },
+       {
+        type: 'list',
+        name: 'license',
+        message:'License used for this project?',
+        choices: ["MIT, Apache, Boost, BSD"],
+       },
+       {
+        type: 'input',
+        name: 'git',
+        message: 'Whats your github username?',
+       },
+       {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?'
+       }, 
+   
+];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -56,9 +60,8 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-    .then((inquirerResponse) => {
-        const CreateMarkdown = `# ${response.title}
+    inquirer.prompt(questions).then((response) => {
+        const createMarkdown = `# ${response.title}
         
         #Description
         ${response.description}
