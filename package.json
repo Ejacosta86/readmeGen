@@ -1,0 +1,21 @@
+{
+  "name": "readmegen",
+  "version": "1.0.0",
+  "description": "ch 9",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "readma"
+  },
+  "keywords": [
+    "homework"
+  ],
+  "author": "Erica",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
