@@ -50,7 +50,9 @@ inquirer
 const questions = [];
 
 // TODO: Create a function to write README file
-function writeToFile(ReadMe, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (error) => error ? console.error(error) : console.log('Writing File'))
+}
 
 // TODO: Create a function to initialize app
 function init() {
