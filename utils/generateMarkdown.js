@@ -30,49 +30,45 @@ function renderLicenseLink(license) {
 function generateMarkdown(
     {title, description, install, usage, contribution, license, test, username, email}
 ) {
-    // const badge = renderLicensesBadge(data.license)
-    // const link = renderLicenseLink(data.license)
-    // const licenseSection = renderLicenseSection(data.license)
     
     return `# ${title}
-    ${renderLicensesBadge(license)}
+${renderLicensesBadge(license)}
    
-    ## Description
-    ${description}
+## Description
+${description}
 
-    ## Table of Contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Contributing](#contributing)
-    - [License](#license)
-    - [Tests](#tests)
-    - [Questions](#questions)
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Tests](#tests)
+- [Questions](#questions)
 
-    ## Installation 
-    ${install}
+## Installation 
+${install}
     
-    ## Usage 
-    ${usage}
+## Usage 
+${usage}
 
-    ## Contributing 
-    ${contribution}
+## Contributing 
+${contribution}
 
-    ## License 
-    ${renderLicenseSection(license)}
-    ${renderLicenseLink(license)}
+## License 
+${renderLicenseSection(license)}
+${renderLicenseLink(license)}
 
-    ## Test
-    ${test}
+## Test
+${test}
 
-    ## Questions
+## Questions
     
-    My GitHub is [${username}](https://github.com/${username}).
-    If you have any further questions, you can email me at ${email}.
-    
-    `;     
+My GitHub is[${username}](https://github.com/${username}).
+If you have any further questions, you can email me at ${email}.
+`;     
 }
 
-    module.exports = generateMarkdown;
+module.exports = generateMarkdown;
 
 
 
