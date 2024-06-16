@@ -27,16 +27,18 @@ function renderLicenseLink(license) {
 }
 
 
-function generateMarkdown(data) {
-    const badge = renderLicensesBadge(data.license)
-    const link = renderLicenseLink(data.license)
-    const licenseSection = renderLicenseSection(data.license)
+function generateMarkdown(
+    {title, description, install, usage, contribution, license, test, username, email}
+) {
+    // const badge = renderLicensesBadge(data.license)
+    // const link = renderLicenseLink(data.license)
+    // const licenseSection = renderLicenseSection(data.license)
     
-    return `# ${data.title}
-    ${badge}
+    return `# ${title}
+    ${renderLicensesBadge(license)}
    
     ## Description
-    ${data.description}
+    ${description}
 
     ## Table of Contents
     - [Installation](#installation)
@@ -47,25 +49,25 @@ function generateMarkdown(data) {
     - [Questions](#questions)
 
     ## Installation 
-    ${data.install}
+    ${install}
     
     ## Usage 
-    ${data.usage}
+    ${usage}
 
     ## Contributing 
-    ${data.contribution}
+    ${contribution}
 
     ## License 
-    ${licenseSection}
-    ${link}
+    ${renderLicenseSection(license)}
+    ${renderLicenseLink(license)}
 
     ## Test
-    ${data.test}
+    ${test}
 
     ## Questions
     
-    My GitHub is [${data.username}](https://github.com/${data.username}).
-    If you have any further questions, you can email me at ${data.email}.
+    My GitHub is [${username}](https://github.com/${username}).
+    If you have any further questions, you can email me at ${email}.
     
     `;     
 }
