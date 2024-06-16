@@ -1,26 +1,28 @@
 function renderLicensesBadge(license) {
-    if (license === "None") {
-        return ""
-    }else if (license === "MIT License") {
+    if (license === "MIT") {
         return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
-    }else if (license === "Apache 2.0 License") {
-        return "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
-    }else if (license === "Boost License") {
-        return "[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)"
-   
+    }else if (license === "Apache 2.0") {
+        return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+    }else if (license === "Boost") {
+        return "[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)"   
 }
 
+}
+function renderLicenseSection(license){
+    if (license === "") {
+        return "N/A"
+    } else {
+        return license
+    }
 }
 
 function renderLicenseLink(license) {
-    if (license === "None") {
-        return ""
-    }else if (license === "MIT License") {
+    if (license === "MIT") {
         return "https://opensource.org/licenses/MIT"
-    }else if (license === "Apache License 2.0") {
-        return "https://opensource.org/licenses/Apache-2.0"
-    }else if (license === "Boost License") {
-        return "https://www.boost.org/LICENSE_1_0.txt"
+    }else if (license === "Apache 2.0") {
+        return "https://opensource.org/license/apache-2-0"
+    }else if (license === "Boost") {
+        return "https://opensource.org/license/bsl-1-0"
     }
 }
 
@@ -28,21 +30,21 @@ function renderLicenseLink(license) {
 function generateMarkdown(data) {
     const badge = renderLicensesBadge(data.license)
     const link = renderLicenseLink(data.license)
+    const licenseSection = renderLicenseSection(data.license)
     
-    return `
+    return `# ${data.title}
     ${badge}
-    # ${data.title}
-    
+   
     ## Description
-    ${response.description}
+    ${data.description}
 
     ## Table of Contents
-    1. [Installation](#installation)
-    2. [Usage](#usage)
-    3. [Contributing](#contributing)
-    4. [License](#license)
-    5. [Tests](#tests)
-    6. [Questions](#questions)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Contributing](#contributing)
+    - [License](#license)
+    - [Tests](#tests)
+    - [Questions](#questions)
 
     ## Installation 
     ${data.install}
@@ -51,7 +53,7 @@ function generateMarkdown(data) {
     ${data.usage}
 
     ## Contributing 
-    ${data.contributing}
+    ${data.contribution}
 
     ## License 
     ${licenseSection}
@@ -65,11 +67,10 @@ function generateMarkdown(data) {
     My GitHub is [${data.username}](https://github.com/${data.username}).
     If you have any further questions, you can email me at ${data.email}.
     
-    `;  
-    
+    `;     
 }
 
-module.exports = generateMarkdown;
+    module.exports = generateMarkdown;
 
 
 

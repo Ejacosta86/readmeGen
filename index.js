@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require ("fs");
-const markdown = require("./utils/generateMarkdown");
+// const markdown = require("./utils/generateMarkdown");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
@@ -14,27 +14,27 @@ const questions = [
        {
         type: 'input',
         name: 'description',
-        message: 'Provide a description of your project.',
+        message: 'Provide a description of your project:',
        },
        {
         type: 'input',
         name: 'install',
-        message: 'Provide installtion instructions',
+        message: 'Provide installtion instructions:',
        },
        {
         type: 'input',
         name:'usage',
-        message:'Provide usage information',
+        message:'Provide usage information:',
        },
        {
         type: 'input',
         name: 'contribution',
-        message: 'list your collaborators. If none, please enter N/A.',
+        message: 'list your collaborators. (If N/A, please enter none):',
        },
        {
         type: 'input',
         name: 'test',
-        message: 'Provide instrustions for testing your project',
+        message: 'Provide instrustions for testing your project:',
        },
        {
         type: 'list',
@@ -57,22 +57,23 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (error) => error ? console.error(error) : console.log('Writing File'))
+    fs.writeFile(fileName, data, () => {
+        console.log(`File ${fileName} was saved with data!`)
+    });
 }
 
 // TODO: Create a function to initialize app
 function init() {
+    console.log(
+        "README Generator!\nPlease answer the following questions..\n"
+    );
+
     inquirer.prompt(questions).then((response) => {
         const markdownText = generateMarkdown(response)
-        writeToFile("README.md", markdownText)
-            console.log("The file has been created!")
+        writeToFile("READMEtemp.md", markdownText);
         });
     }
 
 // Function call to initialize app
 init();
 
-//need to get the badges to show for lic
-//need to get the email to show in the section needed
-//github need to show in section needed with link
-//check the link of Table of cont.
